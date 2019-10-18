@@ -43,6 +43,10 @@ findServer(servers).then(res => {
 })
 
 ```
+findServer Function takes 2 parameters 
+
+* **servers** a list of servers and if not given it will bet initialized as an empty array
+* **timeout(optional)** to deteremine the time period allowed for a request to wait for a response and if it is not given it will be initialized with value of 5000 (5 secs) 
 
 The function return a promise which should be : 
 

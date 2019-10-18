@@ -158,7 +158,17 @@ describe("Test findServer Module", () => {
        utils.sortWithPriority.restore();
        utils.serverPromiseList.restore();
     });
-            
+
+      it("Should return the first parameter (servers) is not valid", ()=> {
+        expect(findServer.bind(findServer, 234)).
+            to.throw(TypeError, 'The first parameter must be of type array') 
+      })  
+
+      it("Should return the second parameter (timeout) is not valid", ()=> {
+        expect(findServer.bind(findServer, [], 'name')).
+            to.throw(TypeError, 'The second paramter must be specified as a number') 
+      }) 
+
       it("Should return the least priority servers from a given list of servers", (done) => {
         let servers = [
           {

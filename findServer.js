@@ -6,7 +6,14 @@ const utils = require('./libs/utils')
  * @param {*} timeOut Number (default = 5000)
  */
 
-const findServer = (servers, timeOut = 5000) => {
+const findServer = (servers = [], timeOut = 5000) => {
+  //Validate The Inputs
+  if(!Array.isArray(servers))
+    throw new TypeError('The first parameter must be of type array')
+  
+  if(isNaN(timeOut))
+    throw new TypeError('The second paramter must be specified as a number')
+
   let promises = utils.serverPromiseList(servers, timeOut),
       offline = [],
       online = [];
